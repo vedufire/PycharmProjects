@@ -159,6 +159,7 @@ class Player(pygame.sprite.Sprite):
         if not self.landed and not self.climbing:
             self.y_change += 0.25
         self.rect.move_ip(self.x_change * self.x_speed, self.y_change)
+        self.rect.clamp_ip(pygame.Rect(0, 0, window_width, window_height))
         self.bottom = pygame.rect.Rect(self.rect.left, self.rect.bottom - 20, self.rect.width, 20)
         if self.x_change != 0 or (self.climbing and self.y_change != 0):
             if self.count < 3:
